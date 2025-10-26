@@ -1,5 +1,11 @@
+#pragma once
 #include "pipeline.h"
 #include "ecgspecific.h"
+#include <cstddef>
+
+#define SHM_NAME "/ecg_shared_memory"
+#define MAX_SAMPLES 1024
+
 
 class SignalReceiver : public Pipeline {
 public:
@@ -8,7 +14,7 @@ public:
         return instance;
     }
 
-    // Delete copy and move operations to enforce singleton property
+    // Deleted copy and move operations to enforce singleton property
     // This will be boilerplate enforced across components
     SignalReceiver(const SignalReceiver&) = delete;
     SignalReceiver& operator=(const SignalReceiver&) = delete;
@@ -20,6 +26,9 @@ public:
     void Forward() override;
 
 private:
-    SignalReceiver() = default;
-    ~SignalReceiver() = default;
+    SignalReceiver();
+    ~SignalReceiver();
+
+    int shmFd;
+    ECGSharedBuffer* shmPtr;
 };
