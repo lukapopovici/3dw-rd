@@ -42,8 +42,7 @@ void SignalReceiver::Forward() {
     if (!shmPtr)
         return;
 
-    if (shmPtr->readIndex != shmPtr->writeIndex)
-        shmPtr->readIndex = (shmPtr->readIndex + 1) % MAX_SAMPLES;
+    //
 }
 
 void SignalReceiver::OutPut_Debug() {

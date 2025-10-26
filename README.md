@@ -6,6 +6,8 @@ This is an implementation of a pipeline that uses IPC (Inter Process Comm) to ge
 
 ### The Gist of it
 
+Further documentation [here](https://www.geeksforgeeks.org/operating-systems/ipc-shared-memory/).
+
 ```
 [ECG Data Producer]  --->  [Shared Memory Buffer]  --->  [SignalReceiver Singleton]
          (Process A)                       (OS-managed)              (Process B)
